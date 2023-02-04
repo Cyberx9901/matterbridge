@@ -13,6 +13,28 @@
 #    Password="yourpass"
 #    PrefixMessagesWithNick=true
 
+[matrix.mymatrix]
+Server="https://matrix.org"
+
+#Use a dedicated user for this and not your own!
+#Messages sent from this user will not be relayed to avoid loops.
+Login="yourlogin"
+Password="yourpass"
+
+#Alternatively you can use MXID and access token (open https://app.element.io/
+#in INCOGNITO mode, open Settings -> lowest tab and above "clear cache and reload"
+#you can find the access token. Close the window without logging out
+#(or the token gets invalid (if it leaks, it can be removed by logging in and using the sessions menu))
+#MxID="@yourbot:example.net"
+#Token="tokenforthebotuser"
+
+RemoteNickFormat="[{PROTOCOL}] <{NICK}> "
+
+#Whether to send the homeserver suffix. eg ":matrix.org" in @username:matrix.org
+#to other bridges, or only send "username".(true only sends username)
+#OPTIONAL (default false)
+NoHomeServerSuffix=false
+
 [[gateway]]
 name="gateway1"
 enable=true
@@ -21,8 +43,8 @@ enable=true
     channel="#testing"
 
     [[gateway.inout]]
-    account="mattermost.work"
-    channel="off-topic"
+    account="matrix.mymatrix"
+    channel="!liberairc:matrix.org"
     
 #simpler config possible since v0.10.2
 #[[gateway]]
